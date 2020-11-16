@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p> LISTA PRZEDMIOTOW</p>
+
+
+	<table style="border: 1px solid black">
+  		<tr>
+  			<th>Id</th>
+		    <th>Nazwa</th>
+		    <th>Opis</th>
+		    <th>Ilość</th>
+		    <th>J.M.</th>
+		    <th>Sektor</th>
+		    <th>/ /</th>
+		    <th>/ /</th>
+		</tr>
+{% for obj in object %}  		
+  		<tr>
+  			<td>{{ obj.id  }}</td>
+		    <td>{{ obj.name }}</td>
+		    <td>{{ obj.description }}</td>
+		    <td>{{ obj.quantity }}</td>
+		    <td>{{ obj.unit }}</td>
+		    <td>{{ obj.place }}</td>
+		    <td><a href="{% url 'delitem' obj.id %}">Usuń</a></td>
+		    <td><a href="{% url 'edititem' obj.id %}">Edytuj</a></td>
+
+  		</tr>
+{% endfor %}
+	</table> 
+{% endblock %}
