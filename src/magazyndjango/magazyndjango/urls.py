@@ -16,12 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from inventory.views import home_view, showitems_view, additems_view, delitems, edititem
-from authent.views import register_view
+from authent.views import register_view, login_view, logoutUser
 
 urlpatterns = [
+    #common
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
-    path('register/', register_view, name="register"),
+    #auth
+    path('login/', login_view, name='login'),
+    path('logout/', logoutUser, name='logout'),
+    path('register/', register_view, name='register'),
+    #inventory
     path('showitems/', showitems_view, name='showitems'),
     path('additems/', additems_view, name='additems'),
     path('delitem/<int:id>', delitems, name='delitem'),
